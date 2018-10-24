@@ -17,12 +17,16 @@ Grafo::Grafo(int v){
     }
 }
 
-int Grafo::linhaVazia(int l){
-    return (this->list[l].getFim() == NULL && this->list[l].getInicio() == NULL);
+Grafo::~Grafo(){
+    delete [] this->list;
 }
 
-int Grafo::inserirAresta(int s, int c, int p){
-    Aresta *nova = new Aresta(p);
+int Grafo::linhaVazia(int l){
+    return (this->list[l].getInicio() == NULL);
+}
+
+int Grafo::inserirAresta(int s, int c, float p){
+    Aresta *nova = new Aresta(p,c);
     if(this->linhaVazia(s)) {
         this->list[s].setFim(nova);
         this->list[s].setInicio(nova);

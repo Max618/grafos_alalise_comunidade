@@ -17,7 +17,7 @@ void Vertice::setFim(Aresta* a){
 }
 
 void Vertice::setInicio(Aresta* a){
-    this->fim = a;
+    this->inicio = a;
 }
 
 char Vertice::getCor(){

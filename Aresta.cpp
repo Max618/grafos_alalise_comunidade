@@ -3,7 +3,8 @@
 
 using namespace std;
 
-Aresta::Aresta(int p){
+Aresta::Aresta(float p, int c){
+    this->chegada = c;
     this->peso = p;
     this->prox = NULL;
 }
@@ -13,7 +14,7 @@ Aresta::Aresta(){
     this->prox = NULL;
 }
 
-void Aresta::setPeso(int p){
+void Aresta::setPeso(float p){
     this->peso = p;
 }
 
@@ -21,8 +22,12 @@ void Aresta::setProx(Aresta* a){
     this->prox = a;
 }
 
-int Aresta::getPeso(){
+float Aresta::getPeso(){
     return this->peso;
+}
+
+int Aresta::getChegada(){
+    return this->chegada;
 }
 
 Aresta* Aresta::getProx(){
@@ -32,7 +37,7 @@ Aresta* Aresta::getProx(){
 void Aresta::imprime(){
     Aresta *aux = this;
     while(aux != NULL){
-        cout << this->peso << "|" << endl;
+        cout << "\t" << this->chegada << "\t|";
         aux = aux->prox;
     }
 }
