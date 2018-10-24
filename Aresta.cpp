@@ -37,7 +37,9 @@ Aresta* Aresta::getProx(){
 void Aresta::imprime(){
     Aresta *aux = this;
     while(aux != NULL){
-        cout << "\t" << this->chegada << "\t|";
+        cout << "-> ";
+        cout << "[" << "" << aux->chegada << "|" << "" << aux->peso << "]";
         aux = aux->prox;
     }
+    cout << "-> NULL";
 }

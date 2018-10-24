@@ -30,30 +30,23 @@ int Grafo::inserirAresta(int s, int c, float p){
     if(this->linhaVazia(s)) {
         this->list[s].setFim(nova);
         this->list[s].setInicio(nova);
+        //cout << "Saida: " << s << " - Destino: " << c << " - Custo: " << p << endl;
         return 1;
     }
+    //cout << "Chegada antes: " << this->list[s].getFim()->getChegada() << endl;
     this->list[s].getFim()->setProx(nova);
     this->list[s].setFim(nova);
+    //cout << "Saida: " << s << " - Destino depois: " << this->list[s].getFim()->getChegada() << " - Custo: " << p << endl;
     return 1;  
 }
 
 void Grafo::imprimirMatriz(){
-
-    for(int k = 0; k < this->numeroVertices; k++)
-        cout << "\t" << k << "\t";
-    cout << endl;
-
+    cout << "[Origem] -> [Destino|Peso]" << endl;
     for(int i = 0; i < this->numeroVertices; i++){
-        for(int k = 0; k < 16*this->numeroVertices; k++)
-            cout << "-";
-        cout << endl;
-        cout << "|";
+        cout << "[" << i << "]";
         this->list[i].getInicio()->imprime();
-        cout << " " << i << endl;
+        cout << endl;
     }
-    for(int k = 0; k < 16*this->numeroVertices; k++)
-        cout << "-";
-    cout << endl;
 }
 
 /*Grafo::Grafo(){
