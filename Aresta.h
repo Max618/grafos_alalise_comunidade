@@ -8,16 +8,18 @@ class Aresta {
 | Implementado por "Gabriel Maximiniano" em 19/10/2018|
 +-----------------------------------------------------+ */
     private:
-        int peso, chegada;
+        int chegada;
+        double peso;
         Aresta *prox;
     public:
-         Aresta(float, int);
+         Aresta(double, int);
          Aresta();
+         virtual ~Aresta();
 
-         void setPeso(float);
+         void setPeso(double);
          void setProx(Aresta*);
 
-         float getPeso();
+         double getPeso();
          int getChegada();
          Aresta* getProx();
 

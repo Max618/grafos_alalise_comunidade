@@ -1,12 +1,17 @@
 #include"Aresta.h"
 #include<iostream>
+#include<stdio.h>
 
 using namespace std;
 
-Aresta::Aresta(float p, int c){
+Aresta::Aresta(double p, int c){
     this->chegada = c;
     this->peso = p;
     this->prox = NULL;
+}
+
+Aresta::~Aresta(){
+    cout << "Destrutor Aresta...\n";
 }
 
 Aresta::Aresta(){
@@ -14,7 +19,7 @@ Aresta::Aresta(){
     this->prox = NULL;
 }
 
-void Aresta::setPeso(float p){
+void Aresta::setPeso(double p){
     this->peso = p;
 }
 
@@ -22,7 +27,7 @@ void Aresta::setProx(Aresta* a){
     this->prox = a;
 }
 
-float Aresta::getPeso(){
+double Aresta::getPeso(){
     return this->peso;
 }
 
@@ -36,9 +41,15 @@ Aresta* Aresta::getProx(){
 
 void Aresta::imprime(){
     Aresta *aux = this;
+    int c = 1;
     while(aux != NULL){
-        cout << "-> ";
-        cout << "[" << "" << aux->chegada << "|" << "" << aux->peso << "]";
+        if(c%5 == 0){
+            printf("\n\t");
+        }
+        c++;
+        printf("-> [%03d|%.15lf]",aux->chegada+1,aux->peso);
+        //cout << "-> ";
+        //cout << "[" << "" << aux->chegada << "|" << "" << aux->peso << "]";
         aux = aux->prox;
     }
     cout << "-> NULL";

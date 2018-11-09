@@ -13,6 +13,7 @@ class Vertice {
         Aresta *inicio, *fim;
     public:
         Vertice();
+        virtual ~Vertice();
 
         void setInicio(Aresta*);
         void setFim(Aresta*);

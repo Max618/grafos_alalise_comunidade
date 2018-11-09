@@ -18,6 +18,7 @@ Grafo::Grafo(int v){
 }
 
 Grafo::~Grafo(){
+    cout << "Destrutor Grafo...\n";
     delete [] this->list;
 }
 
@@ -25,27 +26,28 @@ int Grafo::linhaVazia(int l){
     return (this->list[l].getInicio() == NULL);
 }
 
-int Grafo::inserirAresta(int s, int c, float p){
-    Aresta *nova = new Aresta(p,c);
-    if(this->linhaVazia(s)) {
+void Grafo::inserirAresta(int s, int c, double p){
+    if(s != c){
+        Aresta *nova = new Aresta(p,c);
+        if(this->linhaVazia(s)) {
+            this->list[s].setFim(nova);
+            this->list[s].setInicio(nova);
+            //cout << "Saida: " << s << " - Destino: " << c << " - Custo: " << p << endl;
+            return;
+        }
+        //cout << "Chegada antes: " << this->list[s].getFim()->getChegada() << endl;
+        this->list[s].getFim()->setProx(nova);
         this->list[s].setFim(nova);
-        this->list[s].setInicio(nova);
-        //cout << "Saida: " << s << " - Destino: " << c << " - Custo: " << p << endl;
-        return 1;
-    }
-    //cout << "Chegada antes: " << this->list[s].getFim()->getChegada() << endl;
-    this->list[s].getFim()->setProx(nova);
-    this->list[s].setFim(nova);
-    //cout << "Saida: " << s << " - Destino depois: " << this->list[s].getFim()->getChegada() << " - Custo: " << p << endl;
-    return 1;  
+        //cout << "Saida: " << s << " - Destino depois: " << this->list[s].getFim()->getChegada() << " - Custo: " << p << endl;
+    } 
 }
 
 void Grafo::imprimirMatriz(){
     cout << "[Origem] -> [Destino|Peso]" << endl;
     for(int i = 0; i < this->numeroVertices; i++){
-        cout << "[" << i << "]";
+        cout << "[" << i+1 << "]";
         this->list[i].getInicio()->imprime();
-        cout << endl;
+        cout << endl << endl;
     }
 }
 

@@ -16,7 +16,7 @@ class Grafo {
         ~Grafo();
 
         void imprimirMatriz();
-        int inserirAresta(int, int, float);
+        void inserirAresta(int, int, double);
         int linhaVazia(int);
         //int procurarVertice()
 };
