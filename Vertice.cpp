@@ -11,7 +11,7 @@ Vertice::Vertice(){
 }
 
 Vertice::~Vertice(){
-    cout << "Destrutor Vertice...\n";
+    //cout << "Destrutor Vertice...\n";
     Aresta *aux = this->inicio;
     Aresta *ant;
     while(aux != NULL){

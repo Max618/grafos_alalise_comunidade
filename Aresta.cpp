@@ -11,7 +11,7 @@ Aresta::Aresta(double p, int c){
 }
 
 Aresta::~Aresta(){
-    cout << "Destrutor Aresta...\n";
+    //cout << "Destrutor Aresta...\n";
 }
 
 Aresta::Aresta(){

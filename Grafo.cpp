@@ -18,7 +18,7 @@ Grafo::Grafo(int v){
 }
 
 Grafo::~Grafo(){
-    cout << "Destrutor Grafo...\n";
+    //cout << "Destrutor Grafo...\n";
     delete [] this->list;
 }
 

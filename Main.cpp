@@ -20,14 +20,6 @@ int main(){
 
     grafo->imprimirMatriz();
 
-    //system("sleep 10");
-
-    cout << "foi" << endl;
-
-    /*for(int i = 0; i < TAMANHO; i++){
-        delete [] grafo[i];
-    }*/
-
     delete grafo;
     
     return 0;
