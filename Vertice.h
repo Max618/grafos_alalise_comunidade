@@ -11,6 +11,7 @@ class Vertice {
     private:
         char cor;
         Aresta *inicio, *fim;
+        int numeroArestas;
     public:
         Vertice();
         virtual ~Vertice();
@@ -22,6 +23,9 @@ class Vertice {
         char getCor();
         Aresta* getInicio();
         Aresta* getFim();
+        Vertice* inserirOrdenado(Aresta*);
+        Vertice* inserirInicio(Aresta*);
+        Aresta* getAresta(int);
          
 };
 #endif

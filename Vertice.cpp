@@ -1,6 +1,7 @@
 #include"Vertice.h"
 #include"Aresta.h"
 #include<iostream>
+#include<string>
 
 using namespace std;
 
@@ -8,6 +9,7 @@ Vertice::Vertice(){
     this->cor = 'b';
     this->fim = NULL;
     this->inicio = NULL;
+    this->numeroArestas = 0;
 }
 
 Vertice::~Vertice(){
@@ -43,4 +45,55 @@ Aresta* Vertice::getFim(){
 
 Aresta* Vertice::getInicio(){
     return this->inicio;
+}
+
+Vertice* Vertice::inserirOrdenado(Aresta* nova){
+    Aresta* aux = this->inicio;
+    Aresta* anterior;
+    while(aux != this->fim){
+        if(nova->getPeso() > aux->getPeso()){
+            anterior = aux;
+            aux = aux->getProx();
+        }
+        else{
+            break;
+        }
+    }
+    nova->setProx(aux);
+    if(aux == this->inicio){
+        this->inicio = nova;
+    }
+    else {
+        anterior->setProx(nova);
+        if(anterior == this->fim)
+            this->fim = nova;
+    }
+    this->numeroArestas++;
+    return this;
+}
+Vertice* Vertice::inserirInicio(Aresta* nova){
+    if(this->inicio == NULL){
+        this->inicio = nova;
+        this->fim = nova;
+    }
+    else{
+        nova->setProx(this->inicio);
+        this->inicio = nova;
+    }
+    this->numeroArestas++;
+    return this;
+}
+
+Aresta* Vertice::getAresta(int n){
+    if(n > this->numeroArestas || n == 0)
+        throw string("Indice inexistente - ") + to_string(n);
+    int i = 0;
+    Aresta* aux = this->inicio;
+    while(i < n){
+        aux = aux->getProx();
+        i++;
+    }
+    if(aux == NULL)
+        throw string("Aresta NULL - ") + to_string(n);
+    return aux;
 }

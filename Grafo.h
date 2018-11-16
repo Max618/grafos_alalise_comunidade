@@ -11,13 +11,21 @@ class Grafo {
     private:
         int numeroVertices;
         Vertice *list;
+        int *arvorePrim;
+        int existeBranco();
+        int linhaVazia(int);
+        void setVerticesBrancos();
     public:
         Grafo(int);
         ~Grafo();
 
         void imprimirMatriz();
         void inserirAresta(int, int, double);
-        int linhaVazia(int);
         //int procurarVertice()
+
+        Vertice* getList();
+
+        void setPrim(int);
+        int* getPrim();
 };
 #endif
