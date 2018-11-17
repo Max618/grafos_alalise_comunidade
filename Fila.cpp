@@ -5,7 +5,7 @@ using namespace std;
 
 template <class T>
 class Fila {
-/*----------------- File: Vertice.h ---------------------+
+/*----------------- File: Fila.cpp -------------------+
 |DESCRICAO DO ARQUIVO 								  |
 | 													  |
 | 													  |
