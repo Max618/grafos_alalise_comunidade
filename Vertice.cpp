@@ -85,8 +85,8 @@ Vertice* Vertice::inserirInicio(Aresta* nova){
 }
 
 Aresta* Vertice::getAresta(int n){
-    if(n > this->numeroArestas || n == 0)
-        throw string("Indice inexistente - ") + to_string(n);
+    if(n > this->numeroArestas)
+        throw string("Indice inexistente - "); //+ to_string(n);
     int i = 0;
     Aresta* aux = this->inicio;
     while(i < n){
@@ -94,6 +94,10 @@ Aresta* Vertice::getAresta(int n){
         i++;
     }
     if(aux == NULL)
-        throw string("Aresta NULL - ") + to_string(n);
+        throw string("Aresta NULL - ");// + to_string(n);
     return aux;
+}
+
+int Vertice::getNumeroArestas(){
+	return this->numeroArestas;
 }

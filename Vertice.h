@@ -26,6 +26,7 @@ class Vertice {
         Vertice* inserirOrdenado(Aresta*);
         Vertice* inserirInicio(Aresta*);
         Aresta* getAresta(int);
+        int getNumeroArestas();
          
 };
 #endif
