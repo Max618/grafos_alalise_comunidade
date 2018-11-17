@@ -1,7 +1,6 @@
 #ifndef GRAFO_H
 #define GRAFO_H
 #include"Vertice.h"
-#include<stdio.h>
 
 typedef struct sPrim{
 	int pai;
@@ -37,7 +36,7 @@ class Grafo {
         Grafo(int);
         ~Grafo();
 
-        void imprimirMatriz();
+        void imprimirGrafo();
         void inserirAresta(int, int, double);
         //int procurarVertice()
 

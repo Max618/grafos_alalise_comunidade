@@ -43,10 +43,10 @@ Vertice* Grafo::getList(){
     return this->list;
 }
 
-void Grafo::imprimirMatriz(){
-    cout << "[Origem|Cor] -> [Destino|Peso]" << endl;
+void Grafo::imprimirGrafo(){
+    cout << "[Origem] -> [Destino|Peso]" << endl;
     for(int i = 0; i < this->numeroVertices; i++){
-        cout << "[" << i+1 << "|" << this->list[i].getCor() << "]";
+        cout << "[" << i+1 << "]";
         this->list[i].getInicio()->imprime();
         cout << endl << endl;
     }

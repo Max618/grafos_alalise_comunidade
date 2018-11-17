@@ -35,26 +35,15 @@ int main(){
     prim *arvore;
 
     lerArquivo(grafo, "dados.txt");
+	grafo->imprimirGrafo();
     
     grafo->setPrim(0);
 	arvore = grafo->getPrim();
-	cout << "=====ARVORE " << 1 << "=====" << endl;
+	cout << "=====ARVORE " << 0 << "=====" << endl;
 	for(int i =0; i<TAMANHO; i++){
 		cout << i+1 << " " << arvore[i].pai+1 << " " << arvore[i].peso << endl;
 	}
 
-    /*grafo->inserirAresta(0,1,2);
-    grafo->inserirAresta(1,0,2);
-    grafo->inserirAresta(0,2,1);
-    grafo->inserirAresta(2,0,1);
-    grafo->inserirAresta(0,3,6);
-    grafo->inserirAresta(3,0,6);
-    grafo->inserirAresta(1,2,3);
-    grafo->inserirAresta(2,1,3);
-    grafo->inserirAresta(1,3,4);
-    grafo->inserirAresta(3,1,4);
-    grafo->inserirAresta(2,3,5);
-    grafo->inserirAresta(3,2,5);*/
     
  //    grafo->inserirAresta(0,1,1.1);
  //    grafo->inserirAresta(1,0,1.1);
@@ -81,7 +70,7 @@ int main(){
  //    grafo->inserirAresta(5,4,0.2);
  //    grafo->inserirAresta(4,5,0.2);
 // 
- //    grafo->imprimirMatriz();
+ //    grafo->imprimirGrafo();
 
 	// for(int j = 0; j < TAMANHO; j++){
 	// 	grafo->setPrim(j);
@@ -92,33 +81,8 @@ int main(){
 	// 	}
 	// }
 	
-	
-	// 
-	// grafo->setPrim(1);
-	// arvore = grafo->getPrim();
-	// 
-	// cout << "=====ARVORE 1=====" << endl;
-	// for(int i =0; i<4; i++){
-	// 	cout << i << " " << arvore[i].pai << " " << arvore[i].peso << endl;
-	// }
-	// 
-	// grafo->setPrim(2);
-	// arvore = grafo->getPrim();
-	// 
-	// cout << "=====ARVORE 2=====" << endl;
-	// for(int i =0; i<4; i++){
-	// 	cout << i << " " << arvore[i].pai << " " << arvore[i].peso << endl;
-	// }
-	// 
-	// grafo->setPrim(3);
-	// arvore = grafo->getPrim();
-	// 
-	// cout << "=====ARVORE 3=====" << endl;
-	// for(int i =0; i<4; i++){
-	// 	cout << i << " " << arvore[i].pai << " " << arvore[i].peso << endl;
-	// }
+
 	
     delete grafo;
-    
     return 0;
 }
