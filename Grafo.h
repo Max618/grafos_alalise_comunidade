@@ -1,6 +1,8 @@
 #ifndef GRAFO_H
 #define GRAFO_H
 #include"Vertice.h"
+#include"DisjoinSet.cpp"
+#include"Aresta.h"
 
 typedef struct sPrim{
 	int pai;
@@ -28,10 +30,12 @@ class Grafo {
         int numeroVertices;
         Vertice *list;
         prim *arvorePrim;
+        DisjoinSet <Vertice> *arvoreKruskal;
         int existeBranco();
         int linhaVazia(int);
         void setVerticesBrancos();
         void resetArvorePrim();
+        int arvoreKruskalCompleta();
     public:
         Grafo(int);
         ~Grafo();
@@ -44,5 +48,8 @@ class Grafo {
 
         void setPrim(int);
         prim* getPrim();
+
+        void setKruskal();
+        DisjoinSet<Vertice> * getKruskal();
 };
 #endif

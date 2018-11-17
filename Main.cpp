@@ -5,7 +5,8 @@
 #include<string>
 #include<time.h>
 #include<stdlib.h>
-#define TAMANHO 150
+#include"DisjoinSet.cpp"
+#define TAMANHO 6
 
 using namespace std;
 
@@ -33,44 +34,48 @@ int main(){
     Grafo *grafo = new Grafo(TAMANHO);
 
     prim *arvore;
+    DisjoinSet<Vertice> *arvore2;
 
-    lerArquivo(grafo, "dados.txt");
-	grafo->imprimirGrafo();
+    // lerArquivo(grafo, "dados.txt");
+	// grafo->imprimirGrafo();
     
-    grafo->setPrim(0);
-	arvore = grafo->getPrim();
-	cout << "=====ARVORE " << 0 << "=====" << endl;
-	for(int i =0; i<TAMANHO; i++){
-		cout << i+1 << " " << arvore[i].pai+1 << " " << arvore[i].peso << endl;
-	}
+    // grafo->setPrim(0);
+	// arvore = grafo->getPrim();
+	// cout << "=====ARVORE " << 0 << "=====" << endl;
+	// for(int i =0; i<TAMANHO; i++){
+	// 	cout << i+1 << " " << arvore[i].pai+1 << " " << arvore[i].peso << endl;
+	// }
 
     
- //    grafo->inserirAresta(0,1,1.1);
- //    grafo->inserirAresta(1,0,1.1);
- //    grafo->inserirAresta(0,2,2.1);
- //    grafo->inserirAresta(2,0,2.1);
- //    grafo->inserirAresta(0,3,1.9);
- //    grafo->inserirAresta(3,0,1.9);
- //    grafo->inserirAresta(0,4,0.9);
- //    grafo->inserirAresta(4,0,0.9);
- //    grafo->inserirAresta(1,2,2.4);
- //    grafo->inserirAresta(2,1,2.4);
- //    grafo->inserirAresta(1,3,3.7);
- //    grafo->inserirAresta(3,1,3.7);
- //    grafo->inserirAresta(1,5,0.5);
- //    grafo->inserirAresta(5,1,0.5);
- //    grafo->inserirAresta(2,4,1.8);
- //    grafo->inserirAresta(4,2,1.8);
- //    grafo->inserirAresta(5,2,1.3);
- //    grafo->inserirAresta(2,5,1.3);
- //    grafo->inserirAresta(3,4,4.0);
- //    grafo->inserirAresta(4,3,4.0);
- //    grafo->inserirAresta(3,5,3.4);
- //    grafo->inserirAresta(5,3,3.4);
- //    grafo->inserirAresta(5,4,0.2);
- //    grafo->inserirAresta(4,5,0.2);
-// 
- //    grafo->imprimirGrafo();
+    grafo->inserirAresta(0,1,1.1);
+    grafo->inserirAresta(1,0,1.1);
+    grafo->inserirAresta(0,2,2.1);
+    grafo->inserirAresta(2,0,2.1);
+    grafo->inserirAresta(0,3,1.9);
+    grafo->inserirAresta(3,0,1.9);
+    grafo->inserirAresta(0,4,0.9);
+    grafo->inserirAresta(4,0,0.9);
+    grafo->inserirAresta(1,2,2.4);
+    grafo->inserirAresta(2,1,2.4);
+    grafo->inserirAresta(1,3,3.7);
+    grafo->inserirAresta(3,1,3.7);
+    grafo->inserirAresta(1,5,0.5);
+    grafo->inserirAresta(5,1,0.5);
+    grafo->inserirAresta(2,4,1.8);
+    grafo->inserirAresta(4,2,1.8);
+    grafo->inserirAresta(5,2,1.3);
+    grafo->inserirAresta(2,5,1.3);
+    grafo->inserirAresta(3,4,4.0);
+    grafo->inserirAresta(4,3,4.0);
+    grafo->inserirAresta(3,5,3.4);
+    grafo->inserirAresta(5,3,3.4);
+    grafo->inserirAresta(5,4,0.2);
+    grafo->inserirAresta(4,5,0.2);
+
+    grafo->imprimirGrafo();
+
+    grafo->setKruskal();
+    arvore2 = grafo->getKruskal();
 
 	// for(int j = 0; j < TAMANHO; j++){
 	// 	grafo->setPrim(j);
@@ -84,5 +89,6 @@ int main(){
 
 	
     delete grafo;
+    
     return 0;
 }

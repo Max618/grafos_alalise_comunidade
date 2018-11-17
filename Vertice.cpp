@@ -47,7 +47,8 @@ Aresta* Vertice::getInicio(){
     return this->inicio;
 }
 
-Vertice* Vertice::inserirOrdenado(Aresta* nova){
+Vertice* Vertice::inserirOrdenado(Aresta* nova, int o){
+    this->indice = o;
     Aresta* aux = this->inicio;
     Aresta* anterior;
     while(aux != this->fim){
@@ -101,3 +102,13 @@ Aresta* Vertice::getAresta(int n){
 int Vertice::getNumeroArestas(){
 	return this->numeroArestas;
 }
+
+int Vertice::getIndice(){
+	return this->indice;
+}
+
+ostream& operator<<(ostream& saida, Vertice& v)  
+{  
+    v.getInicio()->imprime();
+    return saida;  
+} 

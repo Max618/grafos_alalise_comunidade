@@ -13,7 +13,7 @@ Grafo::Grafo(int v){
         this->list = new Vertice[v];
         this->arvorePrim = new prim[v];
         this->resetArvorePrim();
-            
+        this->arvoreKruskal = new DisjoinSet <Vertice>;
     }
     else {
         this->numeroVertices = 0;
@@ -26,6 +26,7 @@ Grafo::~Grafo(){
     //cout << "Destrutor Grafo...\n";
     delete [] this->list;
     delete [] this->arvorePrim;
+	delete [] this->arvoreKruskal;
 }
 
 int Grafo::linhaVazia(int l){
@@ -35,7 +36,7 @@ int Grafo::linhaVazia(int l){
 void Grafo::inserirAresta(int s, int c, double p){
     if(s != c){
         Aresta *nova = new Aresta(p,c);
-        this->list[s].inserirOrdenado(nova);
+        this->list[s].inserirOrdenado(nova,s);
     }
 }
 
@@ -124,5 +125,50 @@ void Grafo::setPrim(int vertice_inicial){
 }
 
 prim* Grafo::getPrim(){
-    return arvorePrim;
+    return this->arvorePrim;
+}
+
+int Grafo::arvoreKruskalCompleta(){
+	return (this->arvoreKruskal->getQuatidadeGrupos() == 1);
+}
+
+void Grafo::setKruskal(){
+	cout << "INICIO KRUSKAL" << endl;
+	for(int i =0; i<this->numeroVertices; i++)
+	{
+		this->arvoreKruskal->makeSet(this->list[i]);
+	}
+	//this->arvoreKruskal->imprime(this->arvoreKruskal->findSet(this->list[0]));
+	cout << "INICIO WHILE" << endl;
+	while(!this->arvoreKruskalCompleta()){
+		cout << "KRUSKAL" << endl;
+		Aresta *menor = this->list[0].getAresta(0);
+		int indiceMenor = 0;
+		cout << "KRUSKAL2" << endl;
+		for(int i = 0; i < this->numeroVertices; i++){
+			for(int j=0; j<this->list[i].getNumeroArestas(); j++)
+			{
+				//cout << "MENOR: " << indiceMenor+1 << " -> " << menor->getChegada()+1 << endl;
+				//cout << "I - " << i+1 << " J - " << j+1 << endl;
+				if(this->list[i].getAresta(j)->getPeso() < menor->getPeso()){
+					menor = this->list[i].getAresta(j);
+					indiceMenor = i;
+					//cout << "DENTRO IF - " << indiceMenor+1 << " -> " << menor->getChegada()+1 << endl;
+				}
+			}
+		}
+
+		cout << indiceMenor+1 << " -> " << menor->getChegada()+1 << endl;
+		conjunto<Vertice> *s1 = this->arvoreKruskal->findSet((this->list[menor->getChegada()]));
+		conjunto<Vertice> *s2 = this->arvoreKruskal->findSet((this->list[indiceMenor]));
+		cout << "KRUSKAL5" << endl;
+		if(s1 != s2){
+			cout << "KRUSKAL6" << endl;
+			this->arvoreKruskal->joinSets(s1,s2);
+		}
+	}
+}
+
+DisjoinSet<Vertice>* Grafo::getKruskal(){
+	return this->arvoreKruskal;
 }

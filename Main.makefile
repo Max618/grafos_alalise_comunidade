@@ -1,5 +1,5 @@
-all: Grafo.o Aresta.o Vertice.o Fila.o Main.o
-	g++ Grafo.o Aresta.o Vertice.o Fila.o Main.o -o Main.exe
+all: Grafo.o Aresta.o Vertice.o Fila.o Main.o DisjoinSet.o
+	g++ Grafo.o Aresta.o Vertice.o Fila.o Main.o DisjoinSet.o -o Main.exe
 
 Grafo.o: Grafo.h Grafo.cpp
 	g++ -c Grafo.cpp
@@ -15,6 +15,9 @@ Fila.o: Fila.cpp
 
 Main.o: Grafo.h Main.cpp
 	g++ -c Main.cpp
+
+DisjoinSet.o: DisjoinSet.cpp
+	g++ -c DisjoinSet.cpp
 
 clean:
 	rm *.o
