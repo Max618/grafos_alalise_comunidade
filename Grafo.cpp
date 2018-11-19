@@ -96,29 +96,21 @@ void Grafo::setPrim(int vertice_inicial){
 			arestas.peso = aux->getPeso();
 			
 			if(this->list[arestas.destino].getCor() != 'p'){
-				// cout << "DESTINO - " << arestas.destino << " ATUAL - " << verticeAtual <<endl;
 				Q.inserir(arestas);
 			}
 		}
-		// cout << "INSERIU" << endl;
-		// Q.imprimir();
 		Q.ordenar();
-		// cout << "ORDENADO" << endl;
-		// Q.imprimir();
+
 		//REMOVE FILHOS AINDA NAO VISITADOS
 		do{
 			menorPeso = Q.remover();
 		}while((this->list[menorPeso.destino].getCor() == 'p' || menorPeso.destino == verticeAtual));
-		// cout << "REMOVIDA" << endl;
-		// Q.imprimir();
 		
 		this->arvorePrim[menorPeso.destino].pai = menorPeso.origem;
 		this->arvorePrim[menorPeso.destino].peso = menorPeso.peso;
 		this->list[verticeAtual].setCor('p');
 		this->list[menorPeso.destino].setCor('c');
-		// cout << "COR ATUAL " << verticeAtual << " - " << this->list[verticeAtual].getCor() << endl;
-		// cout << "COR PROX " << menorPeso.destino << " - " << this->list[menorPeso.destino].getCor() << endl;
-		
+				
 		verticeAtual = menorPeso.destino;
 		
 	}

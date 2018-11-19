@@ -42,7 +42,6 @@ class Grafo {
 
         void imprimirGrafo();
         void inserirAresta(int, int, double);
-        //int procurarVertice()
 
         Vertice* getList();
 

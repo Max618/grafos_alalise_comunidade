@@ -48,8 +48,6 @@ void Aresta::imprime(){
         }
         c++;
         printf("-> [%03d|%.15lf]",aux->chegada+1,aux->peso);
-        //cout << "-> ";
-        //cout << "[" << "" << aux->chegada << "|" << "" << aux->peso << "]";
         aux = aux->prox;
     }
     cout << "-> NULL";
