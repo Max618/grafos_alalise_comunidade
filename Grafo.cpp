@@ -26,7 +26,7 @@ Grafo::~Grafo(){
     //cout << "Destrutor Grafo...\n";
     delete [] this->list;
     delete [] this->arvorePrim;
-	delete [] this->arvoreKruskal;
+	delete  this->arvoreKruskal;
 }
 
 int Grafo::linhaVazia(int l){
@@ -171,4 +171,25 @@ void Grafo::setKruskal(){
 
 DisjoinSet<Vertice>* Grafo::getKruskal(){
 	return this->arvoreKruskal;
+}
+
+void Grafo::agrupamento(int k){
+
+	int maior;
+
+	for(int i=1; i<k; i++)
+	{	
+		maior = 0;
+		for(int j=0; j < this->numeroVertices; j++)
+		{
+			if(this->arvorePrim[maior].peso < this->arvorePrim[j].peso)
+			{
+				maior = j;
+			}
+		}
+
+		this->arvorePrim[maior].pai = -1;
+		this->arvorePrim[maior].peso = 0;
+	}
+
 }

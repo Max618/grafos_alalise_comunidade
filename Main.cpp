@@ -6,7 +6,7 @@
 #include<time.h>
 #include<stdlib.h>
 #include"DisjoinSet.cpp"
-#define TAMANHO 6
+#define TAMANHO 150
 
 using namespace std;
 
@@ -23,8 +23,8 @@ void lerArquivo(Grafo *g,const char *nome_arquivo){
                 g->inserirAresta(origem-1,destino-1,peso);
         }
         fclose(arquivo);
-        // if(!fclose(arquivo))
-        //     throw string("Problemas no FECHAMENTO do arquivo");
+         if(!fclose(arquivo))
+            throw string("Problemas no FECHAMENTO do arquivo");
     } catch (string s){
         cout << s << endl;
     }
@@ -34,59 +34,49 @@ int main(){
     Grafo *grafo = new Grafo(TAMANHO);
 
     prim *arvore;
-    DisjoinSet<Vertice> *arvore2;
+    //DisjoinSet<Vertice> *arvore2;
 
-    // lerArquivo(grafo, "dados.txt");
-	// grafo->imprimirGrafo();
-    
-    // grafo->setPrim(0);
-	// arvore = grafo->getPrim();
-	// cout << "=====ARVORE " << 0 << "=====" << endl;
-	// for(int i =0; i<TAMANHO; i++){
-	// 	cout << i+1 << " " << arvore[i].pai+1 << " " << arvore[i].peso << endl;
-	// }
+    int k, vertice_inicial;
 
-    
-    grafo->inserirAresta(0,1,1.1);
-    grafo->inserirAresta(1,0,1.1);
-    grafo->inserirAresta(0,2,2.1);
-    grafo->inserirAresta(2,0,2.1);
-    grafo->inserirAresta(0,3,1.9);
-    grafo->inserirAresta(3,0,1.9);
-    grafo->inserirAresta(0,4,0.9);
-    grafo->inserirAresta(4,0,0.9);
-    grafo->inserirAresta(1,2,2.4);
-    grafo->inserirAresta(2,1,2.4);
-    grafo->inserirAresta(1,3,3.7);
-    grafo->inserirAresta(3,1,3.7);
-    grafo->inserirAresta(1,5,0.5);
-    grafo->inserirAresta(5,1,0.5);
-    grafo->inserirAresta(2,4,1.8);
-    grafo->inserirAresta(4,2,1.8);
-    grafo->inserirAresta(5,2,1.3);
-    grafo->inserirAresta(2,5,1.3);
-    grafo->inserirAresta(3,4,4.0);
-    grafo->inserirAresta(4,3,4.0);
-    grafo->inserirAresta(3,5,3.4);
-    grafo->inserirAresta(5,3,3.4);
-    grafo->inserirAresta(5,4,0.2);
-    grafo->inserirAresta(4,5,0.2);
+     lerArquivo(grafo, "dados.txt");
 
     grafo->imprimirGrafo();
 
-    grafo->setKruskal();
-    arvore2 = grafo->getKruskal();
+    //É MEU AMIGO.. NÃO FUNCIONOU NÃO..
+    // grafo->setKruskal();
+    // arvore2 = grafo->getKruskal();
 
-	// for(int j = 0; j < TAMANHO; j++){
-	// 	grafo->setPrim(j);
-	// 	arvore = grafo->getPrim();
-	// 	cout << "=====ARVORE " << j+1 << "=====" << endl;
-	// 	for(int i =0; i<TAMANHO; i++){
-	// 		cout << i+1 << " " << arvore[i].pai+1 << " " << arvore[i].peso << endl;
-	// 	}
-	// }
+	cout << "DIGITE O VÉRTICE INICIAL PARA A ÁRVORE DE PRIM: ";
+    cin >> vertice_inicial;
+
+    grafo->setPrim(vertice_inicial-1);
+    arvore = grafo->getPrim();
+    cout << "=====ARVORE DE PRIM NO VÉRTICE " << vertice_inicial << "=====" << endl;
+    cout << "[DESTINO - PAI - PESO]" << endl;
+    for(int i =0; i<TAMANHO; i++){
+        if(arvore[i].pai == -1 && arvore[i].peso == 0){
+            cout << i+1 << " - VÉRTICE INICIAL DA ARVORE"  << endl;
+        }else{
+            cout << setprecision(15) << i+1 << " " << arvore[i].pai+1 << " " << arvore[i].peso << endl;
+        }
+    }
 	
+	
+    cout << "DIGITE O NUMERO DE GRUPOS DESEJADO: " ;
+    cin >> k;
 
+    grafo->agrupamento(k);
+
+    cout << "===== AGRUPAMENTOS " << "=====" << endl;
+    cout << "[DESTINO - PAI - PESO]" << endl;
+    for(int i =0; i<TAMANHO; i++){
+        if(arvore[i].pai == -1 && arvore[i].peso == 0){
+            cout << i+1 << " - VÉRTICE INICIAL DO GRUPO"  << endl;
+        }else{
+            cout << i+1 << " " << arvore[i].pai+1 << " " << arvore[i].peso << endl;
+        }
+        
+    }
 	
     delete grafo;
     

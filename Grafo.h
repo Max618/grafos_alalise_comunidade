@@ -51,5 +51,8 @@ class Grafo {
 
         void setKruskal();
         DisjoinSet<Vertice> * getKruskal();
+
+        void agrupamento(int);
+
 };
 #endif
