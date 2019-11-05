@@ -3,7 +3,7 @@
 ## DESCRIÇÃO
 <p>Implementação do Algoritmo de Prim para o reconhecimento de comunidade em grafos, utilizando a linguagem C++ e desenvolvido por: </p>
 <ul>
-    <li>Gabriel Maximiniano - [GitHub](https://github.com/Max618) </li>
+    <li>Gabriel Maximiniano - [GitHub](https://github.com/gabmaxs) </li>
     <li>Victor Alcântara - [GitHub](https://github.com/victoralcantara75) </li>
 </ul>
 <p> Desenvolvido para a disciplina SIN 213 - Projeto de Algoritmos do curso de Sistemas de Informação da UFV-CRP.</p>
